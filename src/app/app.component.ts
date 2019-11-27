@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  logged = false;
   title = 'Summit-Quizz-Front';
+
+  login(){
+    this.logged = true;
+  }
 }

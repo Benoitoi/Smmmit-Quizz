@@ -1,7 +1,27 @@
-<h3 style="text-align:center;">Radar Chart</h3>
-<div style="display: block">
+<div class="main-div">
+    <div class="menu">
+      <div class="content">
+       
+      </div>
+      <chat-dialog></chat-dialog>
+    </div>
+    <div class="profils">
+        <div class="content">
+            <h3 style="text-align:center;">Radar Chart</h3>
+            <div style="display: block">
+            
+                <canvas *ngFor="let chart of charts" baseChart [datasets]="chart" [labels]="demoradarChartLabels"
+                    [options]="options" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+            </div>
+        </div>
+  
+      </div>
+      <div class="leaderboard">
+        <div class="content">
+         
+        </div>
+  
+      </div>
 
-    <canvas *ngFor="let chart of charts" baseChart [datasets]="chart" [labels]="demoradarChartLabels"
-        [options]="options" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
-</div>
+  </div>

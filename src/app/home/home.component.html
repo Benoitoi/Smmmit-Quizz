@@ -1,26 +1,68 @@
 <div class="main-div">
     <div class="menu">
-      <div class="content"></div>
-        <iframe width="100%" height="100%" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/Summit_RH"></iframe>
-      
+        <div class="content"></div>
+        <iframe width="100%" height="100%" allow="microphone;"
+            src="https://console.dialogflow.com/api-client/demo/embedded/Summit_RH"></iframe>
+
     </div>
     <div class="profils">
         <div class="content">
-            <h3 style="text-align:center;">Radar Chart</h3>
-            <div style="display: block">
-            
-                <canvas *ngFor="let chart of charts" baseChart [datasets]="chart" [labels]="demoradarChartLabels"
-                    [options]="options" [chartType]="radarChartType" (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-            </div>
-        </div>
-  
-      </div>
-      <div class="leaderboard">
-        <div class="content">
-         
-        </div>
-  
-      </div>
+            <h1 style="text-align: center; background-color: burlywood;">Profils</h1>
+            <table style="   margin-left:auto; 
+            margin-right:auto;" *ngIf="users[0]">
+                <div style="width: 100%;">
+                    <tr style="width: 100%; height: 100%;" *ngFor="let line of indexLines">
+                        <th style="width: 300px; height: 300px" *ngFor="let column of indexColumns">
+                            <div *ngIf="users[(line*indexColumns.length)+column]">
+                                <button (click)="details((line*indexColumns.length)+column)"
+                                    mat-raised-button>{{users[(line*indexColumns.length)+column].firstname}}</button>
+                                <div *ngIf="users[(line*indexColumns.length)+column].details">
+                                        <br/>
+                                    <img src="../../assets/images/archi.png" alt="architecture" width="30px" height="30px">Architecture : {{users[(line*indexColumns.length)+column].scoreArchi}} <br/>
+                                    <img src="../../assets/images/culture.png" alt="culture" width="30px" height="30px">Connaissance : {{users[(line*indexColumns.length)+column].scoreKnowledge}}<br/>
+                                    <img src="../../assets/images/dev.png" alt="developpment" width="30px" height="30px">Développement : {{users[(line*indexColumns.length)+column].scoreDev}} <br/>
+                                    <img src="../../assets/images/net.png" alt="network" width="30px" height="30px">Réseau : {{users[(line*indexColumns.length)+column].scoreNetwork}}<br/>
+                                    <img src="../../assets/images/social.png" alt="social" width="30px" height="30px">Social : {{users[(line*indexColumns.length)+column].scoreSocial}}<br/>
+                                </div>
+                                <div *ngIf="!users[(line*indexColumns.length)+column].details">
+                                    <h3>Score global : {{users[(line*indexColumns.length)+column].scoreGlobal}}</h3>
+                                    <canvas baseChart [datasets]="users[(line*indexColumns.length)+column].chart"
+                                        [labels]="demoradarChartLabels" [options]="options" [chartType]="radarChartType"
+                                        (chartHover)="chartHovered($event)"
+                                        (chartClick)="chartClicked($event)"></canvas>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </div>
 
-  </div>
+
+            </table>
+            <br/>
+            <button style="   
+            width:100px; 
+            
+            position:relative;
+            top:50%; 
+            left:50%;" mat-stroked-button *ngIf="page != 0" (click)="previousPage()">Précédent</button><br/>
+            <button style="  
+            width:100px; 
+         
+            position:relative;
+            top:50%; 
+            left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="users[(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1]">Suivant</button>
+            <p>{{(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1}}</p>
+
+        </div>
+
+    </div>
+    <div class="leaderboard">
+        <div class="content">
+            <h1 style="text-align: center; color:greenyellow; background-color: black;">Liste des quiz</h1>
+
+            <h2 style="text-align: center; color: white;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
+        </div>
+
+    </div>
+
+</div>

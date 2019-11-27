@@ -25,17 +25,36 @@ interface User {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  users: any[];
-  charts: any[] = [];
+  users: any[] = [];
+  linesCount = 2;
+  page = 0;
+  columnsCount = 2;
+  indexLines = Array(this.linesCount).fill(0).map((x, i) => i);
+  indexColumns = Array(this.columnsCount).fill(0).map((x, i) => i);
+
   options = {
     scale: {
-        ticks: {
-            beginAtZero: true,
-            max: 100
-        }
+      ticks: {
+        beginAtZero: true,
+        max: 100
+      }
     }
-};
+  };
+  quizz: any;
+  nextPage() {
+    this.page++;
+    this.indexLines.map((x, i) => x + this.linesCount);
+    this.indexColumns.map((x, i) => x + this.columnsCount);
+  }
+  previousPage() {
+    this.page--;
+    this.indexLines.map((x, i) => x + this.linesCount);
+    this.indexColumns.map((x, i) => x - this.columnsCount);
+  }
 
+  details(index) {
+    this.users[index]["details"] = !this.users[index]["details"];
+  }
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -51,28 +70,38 @@ export class HomeComponent implements OnInit {
         }
       );
 
+    this.http
+      .get<any[]>('http://localhost:3000/api-quizz/quizz')
+      .subscribe(
+        (response) => {
+          this.quizz = response["response"];
+          this.initCharts();
+        },
+        (error: HttpErrorResponse) => {
+          console.log('Erreur ! : ' + error.message);
+        }
+      );
+
   }
 
   initCharts() {
     console.log(this.users)
 
     this.users = this.users.sort(function (a, b) {
-      return a.scoreGlobal - b.scoreGlobal;
+      return b.scoreGlobal - a.scoreGlobal;
     });
 
     this.users.forEach(user => {
-      this.charts.push([
+      user["details"] = false;
+      user["chart"] = [
         { data: [user.scoreDev, user.scoreNetwork, user.scoreArchi, user.scoreSocial, user.scoreKnowledge], label: 'Compétences' }
-      ])
+      ];
     });
   }
 
   // Radar
   public demoradarChartLabels: string[] = ['Développement', 'Réseau', 'Architecture', 'Social', 'Connaissance'];
 
-  public demoradarChartData: any = [
-    { data: [20, 40, 15, 30, 12], label: 'Company A' }
-  ];
   public radarChartType: string = 'radar';
 
   // events

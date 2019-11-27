@@ -1,0 +1,40 @@
+.main-div{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    
+    
+  }
+
+  .menu {
+      background-color: #083102;
+      width: 10%;
+      height: 100%;
+      margin: 1%;
+      margin-top: 2%;
+      border-radius: 50px;
+  }
+  .profils {
+    background-color: #adffa0;
+    width: 65%;
+    height: 100%;
+    margin: 1%;
+    margin-top: 2%;
+    border-radius: 50px;
+}
+.leaderboard {
+    background-color: #7e4c13;
+    width: 20%;
+    height: 100%;
+    margin: 1%;
+    margin-top: 2%;
+    border-radius: 50px;
+}
+
+  .content {
+    padding-left: 10px;      
+    padding-right: 10px;      
+    padding-bottom: 10px;      
+}

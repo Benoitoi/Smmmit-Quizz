@@ -12,4 +12,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  linkedin() {
+
+  }
+
+  github() {
+
+  }
+  newAccount() {
+
+  }
 }

@@ -14,6 +14,7 @@ interface User {
   scoreNetwork?: number,
   scoreArchi?: number,
   scoreSocial?: number,
+  scoreKnowledge?: number,
   scoreGlobal?: number,
   Github?: string
 }
@@ -26,6 +27,15 @@ interface User {
 export class HomeComponent implements OnInit {
   users: any[];
   charts: any[] = [];
+  options = {
+    scale: {
+        ticks: {
+            beginAtZero: true,
+            max: 100
+        }
+    }
+};
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -52,13 +62,13 @@ export class HomeComponent implements OnInit {
 
     this.users.forEach(user => {
       this.charts.push([
-        { data: [user.scoreDev, user.scoreNetwork, user.scoreArchi, user.scoreSocial], label: 'Compétences' }
+        { data: [user.scoreDev, user.scoreNetwork, user.scoreArchi, user.scoreSocial, user.scoreKnowledge], label: 'Compétences' }
       ])
     });
   }
 
   // Radar
-  public demoradarChartLabels: string[] = ['Développement', 'Réseau', 'Architecture', 'Social'];
+  public demoradarChartLabels: string[] = ['Développement', 'Réseau', 'Architecture', 'Social', 'Connaissance'];
 
   public demoradarChartData: any = [
     { data: [20, 40, 15, 30, 12], label: 'Company A' }

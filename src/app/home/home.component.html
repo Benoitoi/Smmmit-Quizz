@@ -1,1 +1,10 @@
-<p>home works!</p>
+<h3 style="text-align:center;">Radar Chart</h3>
+<div style="display: block">
+
+  <canvas *ngFor="let chart of charts" baseChart
+          [datasets]="chart"
+          [labels]="demoradarChartLabels"
+          [chartType]="radarChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

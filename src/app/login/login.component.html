@@ -1,0 +1,28 @@
+<div class="main-div">
+    <div class="box">
+      <div class="content">
+        <form class="example-form">
+
+          <mat-form-field class="field">
+            <input class="input" matInput placeholder="LOGIN" name="username" required>
+          </mat-form-field>
+
+          <mat-form-field class="field">
+            <input class="input" matInput placeholder="PASSWORD" type="password" name="password" required>
+          </mat-form-field>
+
+        </form>
+
+
+        <button mat-raised-button routerLink="/home" routerLinkActive="active" class="button" style="background-color: #acea7c;">CONNEXION</button>
+        <button mat-raised-button (click)="linkedin()" class="button"
+          style="background-color: #4968a5; color: white;">LINKEDIN</button>
+        <button mat-raised-button (click)="github()" class="button"
+          style="background-color: #494949; color: white;">GITHUB</button>
+        <button mat-raised-button (click)="newAccount()" class="button" style="background-color: #acea7c;">CREATE A NEW
+          ACCOUNT</button>
+      </div>
+
+    </div>
+
+  </div>

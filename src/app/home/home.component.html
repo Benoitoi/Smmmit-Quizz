@@ -54,7 +54,6 @@
             position:relative;
             top:50%; 
             left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="users[(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1]">Suivant</button>
-            <p>{{(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1}}</p>
 
         </div>
 
@@ -62,7 +61,7 @@
     <div class="leaderboard">
         <div class="content">
                 <div class="title">
-            <h1 style="text-align: center; color:Black;">Liste des quiz</h1>
+            <h1 style="text-align: center; color:Black;">Quiz disponibles</h1>
                 </div>
             <h2 style="text-align: center; color: white;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
         </div>

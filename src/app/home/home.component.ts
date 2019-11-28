@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 interface User {
   iduser?: number,
@@ -55,23 +56,43 @@ export class HomeComponent implements OnInit {
   details(index) {
     this.users[index]["details"] = !this.users[index]["details"];
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.http
-      .get<any[]>('http://localhost:3000/api-quizz/user')
-      .subscribe(
-        (response) => {
-          this.users = response["response"];
-          this.initCharts();
-        },
-        (error: HttpErrorResponse) => {
-          console.log('Erreur ! : ' + error.message);
-        }
-      );
+    let type = this.route.snapshot.paramMap.get('type');
+    let scoreMin = this.route.snapshot.paramMap.get('scoreMin');
+    console.log(type)
+    console.log(scoreMin)
+    if (type && scoreMin) {
+      this.http
+        .get<any[]>('http://benoitjaouen.fr:3000/api-quizz/user/match/' + type + '/' + scoreMin)
+        .subscribe(
+          (response) => {
+            this.users = response["response"];
+            this.initCharts();
+          },
+          (error: HttpErrorResponse) => {
+            console.log('Erreur ! : ' + error.message);
+          }
+        );
+    } else {
+
+      this.http
+        .get<any[]>('http://benoitjaouen.fr:3000/api-quizz/user')
+        .subscribe(
+          (response) => {
+            this.users = response["response"];
+            this.initCharts();
+          },
+          (error: HttpErrorResponse) => {
+            console.log('Erreur ! : ' + error.message);
+          }
+        );
+    }
+
 
     this.http
-      .get<any[]>('http://localhost:3000/api-quizz/quizz')
+      .get<any[]>('http://benoitjaouen.fr:3000/api-quizz/quizz')
       .subscribe(
         (response) => {
           this.quizz = response["response"];
@@ -81,6 +102,8 @@ export class HomeComponent implements OnInit {
           console.log('Erreur ! : ' + error.message);
         }
       );
+
+
 
   }
 

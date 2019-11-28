@@ -25,7 +25,8 @@
                                     <img src="../../assets/images/dev.png" alt="developpment" width="30px" height="30px">Développement : {{users[(line*indexColumns.length)+column].scoreDev}} <br/>
                                     <img src="../../assets/images/net.png" alt="network" width="30px" height="30px">Réseau : {{users[(line*indexColumns.length)+column].scoreNetwork}}<br/>
                                     <img src="../../assets/images/social.png" alt="social" width="30px" height="30px">Social : {{users[(line*indexColumns.length)+column].scoreSocial}}<br/>
-                                </div>
+                                    <a  width="30px" height="30px" href="mailto:">{{users[(line*indexColumns.length)+column].email}}</a><br/>
+                                  </div>
                                 <div *ngIf="!users[(line*indexColumns.length)+column].details">
                                     <h3>Score global : {{users[(line*indexColumns.length)+column].scoreGlobal}}</h3>
                                     <canvas baseChart [datasets]="users[(line*indexColumns.length)+column].chart"
@@ -53,7 +54,6 @@
             position:relative;
             top:50%; 
             left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="users[(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1]">Suivant</button>
-            <p>{{(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1}}</p>
 
         </div>
 
@@ -61,7 +61,7 @@
     <div class="leaderboard">
         <div class="content">
                 <div class="title">
-            <h1 style="text-align: center; color:Black;">Liste des quiz</h1>
+            <h1 style="text-align: center; color:Black;">Quiz disponibles</h1>
                 </div>
             <h2 style="text-align: center; color: Black;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
         </div>

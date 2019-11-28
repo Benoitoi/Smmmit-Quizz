@@ -27,6 +27,7 @@
     margin-top: 2%;
     border-color: black;
     border-style: solid;
+    border-radius: 5px;
     
 }
 .leaderboard {
@@ -37,6 +38,7 @@
     margin-top: 2%;
     border-color: black;
     border-style: solid;
+    border-radius: 5px;
   
 }
 
@@ -47,6 +49,7 @@
 }
 
 .title{
-  background-color: #969696;
+ 
+  text-shadow: 2px 2px 2px #B2B2B2;
   
 }

@@ -7,8 +7,8 @@
     </div>
     <div class="profils">
         <div class="content">
-                <div class="title">
-            <h1 style="text-align: center;;">Profils</h1>
+            <div class="title">
+                <h1 style="text-align: center;;">Profils</h1>
             </div>
             <table style="   margin-left:auto; 
             margin-right:auto;" *ngIf="users[0]">
@@ -19,12 +19,22 @@
                                 <button (click)="details((line*indexColumns.length)+column)"
                                     mat-raised-button>{{users[(line*indexColumns.length)+column].firstname}}</button>
                                 <div *ngIf="users[(line*indexColumns.length)+column].details">
-                                        <br/>
-                                    <img src="../../assets/images/archi.png" alt="architecture" width="30px" height="30px">Architecture : {{users[(line*indexColumns.length)+column].scoreArchi}} <br/>
-                                    <img src="../../assets/images/culture.png" alt="culture" width="30px" height="30px">Connaissance : {{users[(line*indexColumns.length)+column].scoreKnowledge}}<br/>
-                                    <img src="../../assets/images/dev.png" alt="developpment" width="30px" height="30px">Développement : {{users[(line*indexColumns.length)+column].scoreDev}} <br/>
-                                    <img src="../../assets/images/net.png" alt="network" width="30px" height="30px">Réseau : {{users[(line*indexColumns.length)+column].scoreNetwork}}<br/>
-                                    <img src="../../assets/images/social.png" alt="social" width="30px" height="30px">Social : {{users[(line*indexColumns.length)+column].scoreSocial}}<br/>
+                                    <br />
+                                    <img src="../../assets/images/archi.png" alt="architecture" width="30px"
+                                        height="30px">Architecture :
+                                    {{users[(line*indexColumns.length)+column].scoreArchi}} <br />
+                                    <img src="../../assets/images/culture.png" alt="culture" width="30px"
+                                        height="30px">Connaissance :
+                                    {{users[(line*indexColumns.length)+column].scoreKnowledge}}<br />
+                                    <img src="../../assets/images/dev.png" alt="developpment" width="30px"
+                                        height="30px">Développement :
+                                    {{users[(line*indexColumns.length)+column].scoreDev}} <br />
+                                    <img src="../../assets/images/net.png" alt="network" width="30px"
+                                        height="30px">Réseau :
+                                    {{users[(line*indexColumns.length)+column].scoreNetwork}}<br />
+                                    <img src="../../assets/images/social.png" alt="social" width="30px"
+                                        height="30px">Social :
+                                    {{users[(line*indexColumns.length)+column].scoreSocial}}<br />
                                 </div>
                                 <div *ngIf="!users[(line*indexColumns.length)+column].details">
                                     <h3>Score global : {{users[(line*indexColumns.length)+column].scoreGlobal}}</h3>
@@ -40,29 +50,28 @@
 
 
             </table>
-            <br/>
+            <br />
             <button style="   
             width:100px; 
             
             position:relative;
             top:50%; 
-            left:50%;" mat-stroked-button *ngIf="page != 0" (click)="previousPage()">Précédent</button><br/>
+            left:50%;" mat-stroked-button *ngIf="page != 0" (click)="previousPage()">Précédent</button><br />
             <button style="  
             width:100px; 
          
             position:relative;
             top:50%; 
-            left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="users[(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1]">Suivant</button>
-            <p>{{(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1}}</p>
+            left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="page < maxPage">Suivant</button>
 
         </div>
 
     </div>
     <div class="leaderboard">
         <div class="content">
-                <div class="title">
-            <h1 style="text-align: center; color:Black;">Liste des quiz</h1>
-                </div>
+            <div class="title">
+                <h1 style="text-align: center; color:Black;">Liste des quiz</h1>
+            </div>
             <h2 style="text-align: center; color: white;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
         </div>
 

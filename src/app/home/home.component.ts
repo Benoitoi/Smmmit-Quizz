@@ -29,7 +29,9 @@ export class HomeComponent implements OnInit {
   users: any[] = [];
   linesCount = 2;
   page = 0;
+  maxPage = 0;
   columnsCount = 2;
+  itemCount = this.linesCount + this.columnsCount;
   indexLines = Array(this.linesCount).fill(0).map((x, i) => i);
   indexColumns = Array(this.columnsCount).fill(0).map((x, i) => i);
 
@@ -44,13 +46,19 @@ export class HomeComponent implements OnInit {
   quizz: any;
   nextPage() {
     this.page++;
-    this.indexLines.map((x, i) => x + this.linesCount);
-    this.indexColumns.map((x, i) => x + this.columnsCount);
+    this.indexLines = this.indexLines.map(function (val) { return ++val; });
+    this.indexColumns = this.indexColumns.map(function (val) { return ++val; });
+    console.log(this.page)
+    console.log(this.indexLines)
+    console.log(this.indexColumns)
   }
   previousPage() {
     this.page--;
-    this.indexLines.map((x, i) => x + this.linesCount);
-    this.indexColumns.map((x, i) => x - this.columnsCount);
+    this.indexLines = this.indexLines.map(function (val) { return --val; });
+    this.indexColumns = this.indexColumns.map(function (val) { return --val; });
+    console.log(this.page)
+    console.log(this.indexLines)
+    console.log(this.indexColumns)
   }
 
   details(index) {
@@ -109,7 +117,8 @@ export class HomeComponent implements OnInit {
 
   initCharts() {
     console.log(this.users)
-
+    this.maxPage = this.users.length / this.itemCount;
+    console.log(this.maxPage)
     this.users = this.users.sort(function (a, b) {
       return b.scoreGlobal - a.scoreGlobal;
     });

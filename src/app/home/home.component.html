@@ -19,25 +19,6 @@
                                 <button (click)="details((line*indexColumns.length)+column)"
                                     mat-raised-button>{{users[(line*indexColumns.length)+column].firstname}}</button>
                                 <div *ngIf="users[(line*indexColumns.length)+column].details">
-<<<<<<< HEAD
-                                    <br />
-                                    <img src="../../assets/images/archi.png" alt="architecture" width="30px"
-                                        height="30px">Architecture :
-                                    {{users[(line*indexColumns.length)+column].scoreArchi}} <br />
-                                    <img src="../../assets/images/culture.png" alt="culture" width="30px"
-                                        height="30px">Connaissance :
-                                    {{users[(line*indexColumns.length)+column].scoreKnowledge}}<br />
-                                    <img src="../../assets/images/dev.png" alt="developpment" width="30px"
-                                        height="30px">Développement :
-                                    {{users[(line*indexColumns.length)+column].scoreDev}} <br />
-                                    <img src="../../assets/images/net.png" alt="network" width="30px"
-                                        height="30px">Réseau :
-                                    {{users[(line*indexColumns.length)+column].scoreNetwork}}<br />
-                                    <img src="../../assets/images/social.png" alt="social" width="30px"
-                                        height="30px">Social :
-                                    {{users[(line*indexColumns.length)+column].scoreSocial}}<br />
-                                </div>
-=======
                                         <br/>
                                     <img src="../../assets/images/archi.png" alt="architecture" width="30px" height="30px">Architecture : {{users[(line*indexColumns.length)+column].scoreArchi}} <br/>
                                     <img src="../../assets/images/culture.png" alt="culture" width="30px" height="30px">Connaissance : {{users[(line*indexColumns.length)+column].scoreKnowledge}}<br/>
@@ -46,7 +27,6 @@
                                     <img src="../../assets/images/social.png" alt="social" width="30px" height="30px">Social : {{users[(line*indexColumns.length)+column].scoreSocial}}<br/>
                                     <a  width="30px" height="30px" href="mailto:">{{users[(line*indexColumns.length)+column].email}}</a><br/>
                                   </div>
->>>>>>> 8776c7eaaacb522ef4967ae81a2c27ff8d93d195
                                 <div *ngIf="!users[(line*indexColumns.length)+column].details">
                                     <h3>Score global : {{users[(line*indexColumns.length)+column].scoreGlobal}}</h3>
                                     <canvas baseChart [datasets]="users[(line*indexColumns.length)+column].chart"
@@ -73,28 +53,17 @@
          
             position:relative;
             top:50%; 
-<<<<<<< HEAD
             left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="page < maxPage">Suivant</button>
-=======
-            left:50%;" mat-stroked-button (click)="nextPage()" *ngIf="users[(((indexLines.length-1)*indexColumns.length)+(indexColumns.length-1))+1]">Suivant</button>
->>>>>>> 8776c7eaaacb522ef4967ae81a2c27ff8d93d195
 
         </div>
 
     </div>
     <div class="leaderboard">
         <div class="content">
-<<<<<<< HEAD
-            <div class="title">
-                <h1 style="text-align: center; color:Black;">Liste des quiz</h1>
-            </div>
-            <h2 style="text-align: center; color: white;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
-=======
                 <div class="title">
             <h1 style="text-align: center; color:Black;">Quiz disponibles</h1>
                 </div>
             <h2 style="text-align: center; color: Black;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
->>>>>>> 8776c7eaaacb522ef4967ae81a2c27ff8d93d195
         </div>
 
     </div>

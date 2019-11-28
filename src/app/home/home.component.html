@@ -15,7 +15,7 @@
                 <div style="width: 100%;">
                     <tr style="width: 100%; height: 100%;" *ngFor="let line of indexLines">
                         <th style="width: 300px; height: 300px" *ngFor="let column of indexColumns">
-                            <div *ngIf="users[(line*indexColumns.length)+column]">
+                            <div class="users" *ngIf="users[(line*indexColumns.length)+column]">
                                 <button (click)="details((line*indexColumns.length)+column)"
                                     mat-raised-button>{{users[(line*indexColumns.length)+column].firstname}}</button>
                                 <div *ngIf="users[(line*indexColumns.length)+column].details">
@@ -63,7 +63,7 @@
                 <div class="title">
             <h1 style="text-align: center; color:Black;">Liste des quiz</h1>
                 </div>
-            <h2 style="text-align: center; color: white;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
+            <h2 style="text-align: center; color: Black;" *ngFor="let quiz of quizz">{{quiz.name}}</h2>
         </div>
 
     </div>
